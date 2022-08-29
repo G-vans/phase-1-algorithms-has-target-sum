@@ -1,6 +1,23 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  //Loop array each item in array
+  for (let i = 0; i < array.length; i++) {
+    
+    const complement = target - array[i];
+    //loop through the rest of the array 
+    for (let j = i + 1; j < array.length; j++) {
+
+      //Check if total matches target
+      if (array[j] === complement) {
+        return true
+      } 
+
+    }
+  } 
+  return false
 }
+
+console.log(hasTargetSum([3,8,12,4,11,7],10));
 
 /* 
   Write the Big O time complexity of your function here
@@ -29,6 +46,18 @@ if (require.main === module) {
 
   console.log("Expecting: false");
   console.log("=>", hasTargetSum([1, 2, 5], 4));
+
+  console.log("Expecting: true");
+  console.log("=>", hasTargetSum([-7, 10, 4, 8], 3));
+
+  console.log("Expecting: true");
+  console.log("=>", hasTargetSum([1, 2, 3, 4], 5));
+
+  console.log("Expecting: true");
+  console.log("=>", hasTargetSum([2, 2, 3, 3], 4));
+
+  console.log("Expecting: false");
+  console.log("=>", hasTargetSum([4], 5));
 }
 
 module.exports = hasTargetSum;
